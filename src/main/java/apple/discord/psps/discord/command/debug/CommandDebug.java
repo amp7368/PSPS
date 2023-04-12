@@ -1,13 +1,13 @@
 package apple.discord.psps.discord.command.debug;
 
+import apple.discord.psps.discord.command.base.DiscordCommand;
 import apple.discord.psps.discord.util.channel.ChannelOutputType;
-import discord.util.dcf.slash.DCFSlashCommand;
 import net.dv8tion.jda.api.entities.channel.concrete.TextChannel;
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
 import net.dv8tion.jda.api.interactions.commands.build.Commands;
 import net.dv8tion.jda.api.interactions.commands.build.SlashCommandData;
 
-public class CommandDebug extends DCFSlashCommand {
+public class CommandDebug extends DiscordCommand {
 
     @Override
     public SlashCommandData getData() {
@@ -15,7 +15,7 @@ public class CommandDebug extends DCFSlashCommand {
     }
 
     @Override
-    public void onCommand(SlashCommandInteractionEvent event) {
+    public void doCommand(SlashCommandInteractionEvent event) {
         for (ChannelOutputType output : ChannelOutputType.values()) {
             TextChannel channel = output.getTextChannel();
             if (channel != null)

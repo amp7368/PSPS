@@ -4,6 +4,7 @@ import apple.discord.psps.discord.command.code.CommandPasscode;
 import apple.discord.psps.discord.command.config.CommandConfig;
 import apple.discord.psps.discord.command.debug.CommandDebug;
 import apple.discord.psps.discord.command.help.CommandHelp;
+import apple.discord.psps.discord.command.help.CommandHelpAdmin;
 import apple.discord.psps.discord.command.purchase.CommandPurchase;
 import apple.discord.psps.discord.server.ServerService;
 import apple.discord.psps.discord.server.ServerState;
@@ -38,9 +39,12 @@ public class DiscordModule extends AppleModule {
         client.getPresence().setPresence(Activity.playing("Slash commands!"), false);
         dcf = new DCF(client);
         DCFCommandManager commands = dcf.commands();
+        // user
         commands.addCommand(new CommandHelp());
-        commands.addCommand(new CommandPasscode(), new CommandPurchase());
+        // admin
+        commands.addCommand(new CommandHelpAdmin(), new CommandPasscode(), new CommandPurchase());
         commands.addCommand(new CommandDebug(), new CommandConfig());
+
         commands.updateCommands();
         try {
             client.awaitReady();

@@ -1,9 +1,9 @@
 package apple.discord.psps.discord.command.config;
 
+import apple.discord.psps.discord.command.base.DiscordCommand;
 import apple.discord.psps.discord.util.CommandMessages;
 import apple.discord.psps.discord.util.channel.ChannelOutput;
 import apple.discord.psps.discord.util.channel.ChannelOutputType;
-import discord.util.dcf.slash.DCFSlashCommand;
 import discord.util.dcf.slash.DCFSlashSubCommand;
 import java.util.List;
 import net.dv8tion.jda.api.entities.channel.concrete.TextChannel;
@@ -18,7 +18,7 @@ import net.dv8tion.jda.api.interactions.commands.build.SlashCommandData;
 import net.dv8tion.jda.api.interactions.commands.build.SubcommandData;
 import org.jetbrains.annotations.Nullable;
 
-public class CommandConfig extends DCFSlashCommand {
+public class CommandConfig extends DiscordCommand {
 
     @Override
     public SlashCommandData getData() {
@@ -32,7 +32,7 @@ public class CommandConfig extends DCFSlashCommand {
     }
 
     @Override
-    public void onCommand(SlashCommandInteractionEvent event) {
+    public void doCommand(SlashCommandInteractionEvent event) {
     }
 
     private static class CommandChannelConfig extends DCFSlashSubCommand implements CommandMessages {
